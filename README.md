@@ -1,6 +1,6 @@
 # <span style="color: #566b70;">CRe_Notify</span>
 
-Custom NUI Notification Script - Standalone Script - Official Script of the <a href="https://github.com/CRe-Framework" style="color: #80c4b7"><span>*CRe Framework*</span></a>
+Custom NUI Notification Script - Standalone Script - Official Script of the <a target="_blank" href="https://github.com/CRe-Framework" style="color: #80c4b7"><span>*CRe Framework*</span></a>
 
 ## **Install**
 
@@ -29,4 +29,4 @@ TriggerClientEvent('CRe_Notify:Show', source, '{type}', '{title}', '{message}', 
 <br>
 
 #
-### Credits:  <a href="https://github.com/lucassbersee" style="color: #80c4b7; letter-spacing: 1.5px;"><span>*@lucassbersee*</span></a>
+### Credits:  <a target="_blank" href="https://github.com/lucassbersee" style="color: #80c4b7; letter-spacing: 1.5px;"><span>*@lucassbersee*</span></a>
