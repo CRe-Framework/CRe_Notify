@@ -38,7 +38,10 @@ TriggerEvent('CRe_Notify:ShowDialog', '{message}', {milliseconds}, callback)
 <br><span style="background-color: #eb9a65; padding: 4px; border-radius: 5px; color: #172236;">server-side</span>
 ```lua 
 TriggerClientEvent('CRe_Notify:ShowDialog', {source}, '{message}', {milliseconds}, callback)
-``` 
+```
+
+<br>
+### Callback return: true/false
 
 #
 ### Credits:  <a target="_blank" href="https://github.com/lucassbersee" style="color: #80c4b7; letter-spacing: 1.5px;"><span>*@lucassbersee*</span></a>
