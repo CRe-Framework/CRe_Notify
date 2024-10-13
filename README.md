@@ -65,7 +65,7 @@ TriggerEvent('CRe_Notify:ShowTextarea', '{message}', {button}, callback)
 ```lua 
 TriggerClientEvent('CRe_Notify:ShowTextarea', {source}, '{message}', {button}, callback)
 ```
-<br>Callback return: table >> return[line]
+<br>Callback return: table >> table[x]
 
 #
 ### Credits:  <a target="_blank" href="https://github.com/lucassbersee" style="color: #80c4b7; letter-spacing: 1.5px;"><span>*@lucassbersee*</span></a>
