@@ -83,6 +83,64 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 dialogElement.remove()
                 sendData({ value: true, key: e.data.key }, 'ReceiveDialogExists')
             }
+        } else if (e.data.void === 'add_input') {
+            const div = document.createElement('div')
+            div.className = 'input'
+
+            const input = document.createElement('input')
+            input.type = e.data.type 
+            input.placeholder = e.data.message 
+            input.id = 'InputInput'
+
+            const button = document.createElement('button')
+            button.id = 'InputSend'
+            button.textContent = e.data.button
+
+            div.appendChild(input)
+            div.appendChild(button)
+
+            document.querySelector('body').appendChild(div)
+
+            const audio = new Audio('./sound.mp3');
+            audio.play()
+
+            document.getElementById('InputSend').addEventListener('click', function() {
+                const inputValue = document.getElementById('InputInput').value;
+                if (inputValue.trim() !== '') {
+                    const div = document.querySelector('.input');
+                    div.remove()
+                    
+                    sendData({ value: inputValue }, 'ReceiveInputData')
+                }
+            });
+        } else if (e.data.void === 'add_textarea') {
+            const div = document.createElement('div')
+            div.className = 'textarea'
+
+            const txt = document.createElement('textarea')
+            txt.placeholder = e.data.message
+            txt.id = 'txtareaaa'
+
+            const button = document.createElement('button')
+            button.id = 'TextareaSend'
+            button.textContent = e.data.button
+
+            div.appendChild(txt)
+            div.appendChild(button)
+            document.querySelector('body').appendChild(div)
+
+            const audio = new Audio('./sound.mp3');
+            audio.play()
+
+            document.getElementById('TextareaSend').addEventListener('click', function() {
+                const inputValue = document.getElementById('txtareaaa').value;
+                if (inputValue.trim() !== '') {
+                    const div = document.querySelector('.textarea');
+                    div.remove()
+                    
+                    sendData({ value: inputValue }, 'ReceiveTextareaData')
+                }
+            });
         }
     });
 });

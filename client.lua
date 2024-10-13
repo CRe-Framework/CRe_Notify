@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------
------   ---------        Notify
+-----   ---------        Notification
 ------------------------------------------------------------------------------------------
 
 RegisterNetEvent('CRe_Notify:Show')
@@ -11,18 +11,18 @@ end)
 -----   ---------        Dialog
 ------------------------------------------------------------------------------------------
 
-local _callback = nil
+local dialog_callback = nil
 
 RegisterNetEvent('CRe_Notify:ShowDialog')
 AddEventHandler('CRe_Notify:ShowDialog', function(message, time, callback)
     SendNUIMessage({ void = 'add_dialog', message = message, time = time })
-    _callback = callback
+    dialog_callback = callback
 end)
 
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-
+        
         if IsControlJustPressed(0, 246) then 
             SendNUIMessage({ void = 'verifDialogExists', key = true }) 
         elseif IsControlJustPressed(0, 303) then 
@@ -32,13 +32,49 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNUICallback('ReceiveDialogExists', function(data)
-    if data.value then _callback(data.key) end
+    if data.value then dialog_callback(data.key) end
+end)
+
+------------------------------------------------------------------------------------------
+-----   ---------        Input
+------------------------------------------------------------------------------------------
+
+local input_callback = nil
+
+RegisterNetEvent('CRe_Notify:ShowInput')
+AddEventHandler('CRe_Notify:ShowInput', function(message, type, button, callback)
+    input_callback = callback
+    SetNuiFocus(true, true)
+    SendNUIMessage({ void = 'add_input', message = message, type = type, button = button })
+end)
+
+RegisterNUICallback('ReceiveInputData', function(data)
+    SetNuiFocus(false, false)
+    input_callback(data.value)
 end)
 
 
 
-RegisterCommand('dialogg', function()
-    TriggerEvent('CRe_Notify:ShowDialog', 'Você é o melhor dev de todos?', 30000, function(result)
-        
+RegisterCommand('inputt', function()
+    TriggerEvent('CRe_Notify:ShowTextarea', 'Escreva seu nome completo...', 'Enviar', function(res)
+        print(res)
     end)
+end)
+
+------------------------------------------------------------------------------------------
+-----   ---------        Textarea
+------------------------------------------------------------------------------------------
+
+local textarea_callback = nil 
+
+RegisterNetEvent('CRe_Notify:ShowTextarea')
+AddEventHandler('CRe_Notify:ShowTextarea', function(message, button, callback)
+    textarea_callback = callback
+    SetNuiFocus(true, true)
+    SendNUIMessage({ void = 'add_textarea', message = message, button = button })
+end)
+
+RegisterNUICallback('ReceiveTextareaData', function(data)
+    SetNuiFocus(false, false)
+    textarea_callback(data.value)
 end)

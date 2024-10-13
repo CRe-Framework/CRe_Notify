@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'lucassbersee'
 description 'Custom NUI Notification Script - Standalone Script - Official Script of the CRe Framework'
-version '2.0'
+version '3.0'
 
 client_scripts {
     'client.lua'
