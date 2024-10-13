@@ -40,8 +40,7 @@ TriggerEvent('CRe_Notify:ShowDialog', '{message}', {milliseconds}, callback)
 TriggerClientEvent('CRe_Notify:ShowDialog', {source}, '{message}', {milliseconds}, callback)
 ```
 
-<br>
-### Callback return: true/false
+<br>Callback return: true/false
 
 #
 ### Credits:  <a target="_blank" href="https://github.com/lucassbersee" style="color: #80c4b7; letter-spacing: 1.5px;"><span>*@lucassbersee*</span></a>
