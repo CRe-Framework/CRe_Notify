@@ -53,14 +53,6 @@ RegisterNUICallback('ReceiveInputData', function(data)
     input_callback(data.value)
 end)
 
-
-
-RegisterCommand('inputt', function()
-    TriggerEvent('CRe_Notify:ShowTextarea', 'Escreva seu nome completo...', 'Enviar', function(res)
-        print(res)
-    end)
-end)
-
 ------------------------------------------------------------------------------------------
 -----   ---------        Textarea
 ------------------------------------------------------------------------------------------
@@ -76,5 +68,11 @@ end)
 
 RegisterNUICallback('ReceiveTextareaData', function(data)
     SetNuiFocus(false, false)
-    textarea_callback(data.value)
+
+    local linhas = {}
+    for linha in data.value:gmatch("[^\r\n]+") do
+        table.insert(linhas, linha)
+    end
+
+    textarea_callback(linhas)
 end)
